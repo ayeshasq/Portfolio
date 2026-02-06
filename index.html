@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayesha Siddiqui | Cybersecurity Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --accent: #06b6d4;
+            --accent-secondary: #8b5cf6;
+            --bg-dark: #0a0e1a;
+            --bg-darker: #050810;
+            --bg-card: #12182b;
+            --text-primary: #e8eaed;
+            --text-secondary: #9ca3af;
+            --border: #1f2937;
+            --glow: rgba(16, 185, 129, 0.4);
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 98%, rgba(16, 185, 129, 0.08) 98%),
+                linear-gradient(0deg, transparent 98%, rgba(16, 185, 129, 0.08) 98%);
+            background-size: 60px 60px;
+            z-index: 0;
+            pointer-events: none;
+            animation: gridPulse 8s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Particle Effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            will-change: transform;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+            animation: floatParticle linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            5% { 
+                opacity: 0.6; 
+                transform: translateY(95vh) translateX(10px) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(50vh) translateX(50px) scale(1.2);
+            }
+            95% { 
+                opacity: 0.6; 
+                transform: translateY(5vh) translateX(100px) scale(1);
+            }
+            100% {
+                transform: translateY(-10vh) translateX(120px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Parallax layers */
+        .parallax-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .parallax-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent), transparent);
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, var(--accent-secondary), transparent);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-30px, 50px) scale(0.9);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 14, 26, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px var(--glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: heroGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px var(--glow)); }
+            50% { filter: drop-shadow(0 0 40px var(--glow)); }
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px var(--glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px var(--glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px var(--glow);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .skill-category:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: rgba(16, 185, 129, 0.25);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--primary);
+            transform: translateX(10px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-item h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .timeline-item .role {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .timeline-item .duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.15);
+            border-radius: 6px;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .timeline-item li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--accent-secondary);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            text-shadow: 0 0 10px var(--glow);
+        }
+
+        /* Education */
+        .education-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .education-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .education-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .degree {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .education-card .duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cert-card .status {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px var(--glow);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-card .fa-linkedin {
+            color: #0A66C2;
+        }
+
+        .contact-card .fa-github {
+            color: #ffffff;
+        }
+
+        .contact-card .fa-envelope {
+            color: #EA4335;
+        }
+
+        .contact-card .fa-phone {
+            color: var(--primary);
+        }
+
+        .contact-card:hover .fa-linkedin,
+        .contact-card:hover .fa-github,
+        .contact-card:hover .fa-envelope,
+        .contact-card:hover .fa-phone {
+            transform: scale(1.1);
+            transition: transform 0.3s;
+        }
+
+        .contact-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 6rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item {
+                padding: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Grid Background -->
+    <div class="grid-bg"></div>
+
+    <!-- Parallax Orbs -->
+    <div class="parallax-layer">
+        <div class="parallax-orb orb-1"></div>
+        <div class="parallax-orb orb-2"></div>
+        <div class="parallax-orb orb-3"></div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">AS</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="glitch-wrapper">
+                <h1>AYESHA SIDDIQUI</h1>
+            </div>
+            <p class="subtitle">Cybersecurity Research Engineer | AI Security | Threat Intelligence | SIEM</p>
+            <p class="tagline">
+                MS Cybersecurity @ Pace University | Cybersecurity Research Engineer @ Gaytri LLC | 
+                Specializing in AI security architecture, threat modeling, and AI-assisted security monitoring | 
+                Building secure AI systems and AI-powered security solutions
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Cybersecurity professional with a passion for AI-powered security</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>🛡️ Security-First Mindset</h3>
+                    <p>
+                        I'm a Cybersecurity Research Engineer with 3+ years of experience specializing in AI security, 
+                        threat modeling, and security monitoring across enterprise and public sector environments.
+                    </p>
+                    <p>
+                        Currently at Gaytri LLC, I focus on developing secure AI architectures, conducting vulnerability 
+                        assessments for AI systems, and researching emerging AI-specific threats. My work bridges traditional 
+                        cybersecurity with cutting-edge AI security challenges.
+                    </p>
+                    <p>
+                        I specialize in building AI-powered security systems - from RAG-based threat intelligence to 
+                        LLM-assisted SOC workflows that make incident response faster and more accurate, while ensuring 
+                        the security of AI systems themselves.
+                    </p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">GitHub Projects</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">7+</span>
+                        <span class="stat-label">Attack Vectors Detected</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">5s</span>
+                        <span class="stat-label">Incident Triage Time</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <p class="section-subtitle">Tools and technologies I use to secure systems</p>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>💻 Programming & Scripting</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">PowerShell</span>
+                        <span class="skill-tag">KQL</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🛡️ Security Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Splunk SIEM</span>
+                        <span class="skill-tag">ServiceNow</span>
+                        <span class="skill-tag">Linux System</span>
+                        <span class="skill-tag">Tenable/Nessus</span>
+                        <span class="skill-tag">Rapid7</span>
+                        <span class="skill-tag">Microsoft Sentinel</span>
+                        <span class="skill-tag">Microsoft Defender</span>
+                        <span class="skill-tag">CrowdStrike</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Nmap</span>
+                        <span class="skill-tag">Burp Suite</span>
+                        <span class="skill-tag">pfSense</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">AWS CloudTrail</span>
+                        <span class="skill-tag">Azure AD</span>
+                        <span class="skill-tag">Entra ID</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📋 Security Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">NIST CSF</span>
+                        <span class="skill-tag">ISO 27001-2</span>
+                        <span class="skill-tag">Zero-Trust</span>
+                        <span class="skill-tag">COBIT</span>
+                        <span class="skill-tag">PCI-DSS</span>
+                        <span class="skill-tag">HIPAA</span>
+                        <span class="skill-tag">SOC2</span>
+                        <span class="skill-tag">MITRE ATT&CK</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🌐 Networking & Security</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Firewalls</span>
+                        <span class="skill-tag">IDS/IPS</span>
+                        <span class="skill-tag">VPN</span>
+                        <span class="skill-tag">IAM</span>
+                        <span class="skill-tag">RBAC</span>
+                        <span class="skill-tag">MFA</span>
+                        <span class="skill-tag">Incident Response</span>
+                        <span class="skill-tag">Threat Hunting</span>
+                        <span class="skill-tag">Vulnerability Management</span>
+                        <span class="skill-tag">Threat Mitigation</span>
+                        <span class="skill-tag">Data Loss Prevention</span>
+                        <span class="skill-tag">Least Privilege</span>
+                        <span class="skill-tag">Secure SDLC</span>
+                        <span class="skill-tag">Authentication & Authorization</span>
+                        <span class="skill-tag">Endpoint Security</span>
+                        <span class="skill-tag">Post-Incident Reviews</span>
+                        <span class="skill-tag">Alert Triage</span>
+                        <span class="skill-tag">Log Analysis</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>☁️ Cloud & Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">CloudTrail</span>
+                        <span class="skill-tag">Azure AD</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">pfSense</span>
+                        <span class="skill-tag">Linux</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤖 AI & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LLMs</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">ML for Security</span>
+                        <span class="skill-tag">Anomaly Detection</span>
+                        <span class="skill-tag">AI Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">Building secure systems across public and private sectors</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Gaytri LLC</h3>
+                            <p class="role">Cybersecurity Research Engineer</p>
+                        </div>
+                        <span class="duration">Jan 2026 - Present</span>
+                    </div>
+                    <ul>
+                        <li>Developing and maintaining AI security architecture, including secure model deployment and data handling</li>
+                        <li>Conducting threat modeling and vulnerability assessments for AI systems and applications</li>
+                        <li>Monitoring and analyzing security events using AI-assisted detection and alerting tools</li>
+                        <li>Researching emerging AI-specific threats and designing mitigation strategies</li>
+                        <li>Maintaining secure coding, deployment, and operational standards for AI applications</li>
+                        <li>Documenting technical designs, security controls, and operational procedures</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>New York City Department of Finance</h3>
+                            <p class="role">Cybersecurity Analyst | FinTech Unit</p>
+                        </div>
+                        <span class="duration">Jun 2025 - Dec 2025</span>
+                    </div>
+                    <ul>
+                        <li>Supported cybersecurity operations for regulated public-sector environment, monitoring security events and identifying risks impacting enterprise and infrastructure systems</li>
+                        <li>Analyzed network, endpoint, and cloud security logs using SIEM tools to detect anomalies, access issues, and policy deviations</li>
+                        <li>Assisted with risk tracking, remediation coordination, and documentation to support compliance with internal policies and industry frameworks</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <h3>Symphony Brand Communications</h3>
+                            <p class="role">Application Security Engineer</p>
+                        </div>
+                        <span class="duration">Jan 2022 - Dec 2023</span>
+                    </div>
+                    <ul>
+                        <li>Supported application and system security by reviewing vulnerability findings and assisting with risk prioritization and remediation tracking</li>
+                        <li>Investigated authentication issues, access anomalies, and privilege misuse, contributing to risk reduction and incident documentation</li>
+                        <li>Assisted with Identity and Access Management (IAM) controls, including RBAC, MFA, and least-privilege reviews, to protect sensitive systems</li>
+                        <li>Collaborated with development and IT teams to reinforce secure configuration standards and documentation aligned with organizational policies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Real-world security systems I've built</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>AI Security Log Analyzer</h3>
+                        </div>
+                        <span class="project-icon">🔍</span>
+                    </div>
+                    <p>
+                        Enterprise-grade security log analyzer using Python and AI to detect 7+ attack vectors 
+                        (brute force, ransomware, cloud credential abuse) across Splunk/AWS/Azure platforms with 
+                        MITRE ATT&CK mapping, threat intelligence integration, and quantified risk scoring (0-100).
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">AI/ML</span>
+                        <span class="tech-badge">Splunk</span>
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">Azure</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://security-log-analyzer-cyberproject.streamlit.app" target="_blank" class="project-link">
+                            🌐 Live Demo
+                        </a>
+                        <a href="https://github.com/ayeshasq" target="_blank" class="project-link">
+                            📂 GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>CTF Generator</h3>
+                        </div>
+                        <span class="project-icon">🎯</span>
+                    </div>
+                    <p>
+                        AI CTF Generator creates fully unique cybersecurity challenges in one click. Generates web, 
+                        forensics, malware, OSINT, or PCAP puzzles with flags, hints, files, and storylines instantly. 
+                        Perfect for learning and teaching cybersecurity.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">AI</span>
+                        <span class="tech-badge">CTF</span>
+                        <span class="tech-badge">Security Training</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://ctf-generator.vercel.app" target="_blank" class="project-link">
+                            🌐 Live Demo
+                        </a>
+                        <a href="https://github.com/ayeshasq/ctf-generator" target="_blank" class="project-link">
+                            📂 GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>CyberPath</h3>
+                        </div>
+                        <span class="project-icon">🛤️</span>
+                    </div>
+                    <p>
+                        Interactive learning platform for beginners to start their cybersecurity journey. 
+                        Provides structured learning paths, resources, and hands-on exercises to build 
+                        foundational security skills.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Education</span>
+                        <span class="tech-badge">Web Dev</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://cyberpath-sigma.vercel.app" target="_blank" class="project-link">
+                            🌐 Live Demo
+                        </a>
+                        <a href="https://github.com/ayeshasq/cyberpath" target="_blank" class="project-link">
+                            📂 GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>Network Defense for Luna Bags</h3>
+                        </div>
+                        <span class="project-icon">🛡️</span>
+                    </div>
+                    <p>
+                        Deployed and configured Splunk Enterprise SIEM to monitor internal, DMZ, and cloud traffic, 
+                        enabling automated threat detection and alerting for DDoS, data exfiltration, and anomalous 
+                        activity while strengthening IDS, access controls, and PCI-DSS compliance.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Splunk</span>
+                        <span class="tech-badge">SIEM</span>
+                        <span class="tech-badge">IDS/IPS</span>
+                        <span class="tech-badge">PCI-DSS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ayeshasq/NetworkDefense" target="_blank" class="project-link">
+                            📂 GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>SQL Injection Detection</h3>
+                        </div>
+                        <span class="project-icon">💉</span>
+                    </div>
+                    <p>
+                        Python-based detection scripts to simulate and identify SQL injection attacks. 
+                        Integrated IDS-based monitoring for real-time alerting, performing root-cause 
+                        analysis of injection vectors, and documenting mitigation recommendations.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">Web Security</span>
+                        <span class="tech-badge">Pentesting</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ayeshasq/SQLinjection" target="_blank" class="project-link">
+                            📂 GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-cards">
+                <div class="education-card">
+                    <h3>Pace University</h3>
+                    <p class="degree">Master of Science (MS) in Cybersecurity</p>
+                    <p class="degree">Concentration: Cyber Operations</p>
+                    <p class="duration">Jan 2024 - Dec 2025 | New York, NY</p>
+                </div>
+                <div class="education-card">
+                    <h3>University of Mumbai</h3>
+                    <p class="degree">Bachelor of Science (BS) in Information Technology</p>
+                    <p class="duration">Sep 2020 - May 2023 | Mumbai, India</p>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 4rem;">Certifications & Training</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">🏅</div>
+                    <h4>CompTIA Security+</h4>
+                    <p class="status">Active</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🛡️</div>
+                    <h4>WiCyS eCTF</h4>
+                    <p class="status">Active</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">📊</div>
+                    <h4>Splunk Operations & Defense Analyst</h4>
+                    <p class="status">Completed</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🔍</div>
+                    <h4>Investigating with Splunk</h4>
+                    <p class="status">Completed</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🤖</div>
+                    <h4>Foundation of AI Security</h4>
+                    <p class="status">Completed</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🧠</div>
+                    <h4>AI Cybersecurity & LLMs</h4>
+                    <p class="status">Completed</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🔐</div>
+                    <h4>Cryptographic Encryption</h4>
+                    <p class="status">Completed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Open to cybersecurity opportunities and collaborations</p>
+            <div class="contact-grid">
+                <a href="/cdn-cgi/l/email-protection#7c1d05190f141d230f0d3c10150a19521512" class="contact-card">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <h3>Email</h3>
+                    <p><span class="__cf_email__" data-cfemail="c6a7bfa3b5aea799b5b786aaafb0a3e8afa8">[email&#160;protected]</span></p>
+                </a>
+                <a href="https://www.linkedin.com/in/ayesha-siddiqui-as44927n" target="_blank" class="contact-card">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me</p>
+                </a>
+                <a href="https://github.com/ayeshasq" target="_blank" class="contact-card">
+                    <i class="fab fa-github contact-icon"></i>
+                    <h3>GitHub</h3>
+                    <p>View my projects</p>
+                </a>
+                <a href="tel:+13476807133" class="contact-card">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <h3>Phone</h3>
+                    <p>(347) 680-7133</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ayesha Siddiqui. All rights reserved. | Built with passion for cybersecurity</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Particle Animation with Apple-style parallax
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Apple-style parallax scroll effect
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const particles = document.getElementById('particles');
+            const gridBg = document.querySelector('.grid-bg');
+            const parallaxLayer = document.querySelector('.parallax-layer');
+            
+            if (particles) {
+                particles.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            
+            if (gridBg) {
+                gridBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+            
+            if (parallaxLayer) {
+                parallaxLayer.style.transform = `translateY(${scrolled * 0.2}px)`;
+            }
+            
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick, { passive: true });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all major elements
+        document.querySelectorAll('.skill-category, .timeline-item, .project-card, .education-card, .cert-card, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
